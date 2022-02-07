@@ -1,5 +1,6 @@
 import 'package:api_integration/bloc/post_bloc.dart';
 import 'package:api_integration/model/posts_model.dart';
+import 'package:api_integration/ui/posts_get.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -28,33 +29,9 @@ class Check extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return const SafeArea(
       child: Scaffold(
-        body: StreamBuilder(
-          stream: PostBloc().posts,
-          builder: (context, AsyncSnapshot<List<Posts>> snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting ||
-                snapshot.connectionState == ConnectionState.none) {
-              return Center(child: CircularProgressIndicator());
-            } else if (snapshot.connectionState == ConnectionState.done) {
-              if (snapshot.hasError) {
-                return Text("Error");
-              }
-            }
-            List<Posts>? posts = snapshot.data;
-            return ListView.separated(
-              itemCount: posts?.length ?? 0,
-              separatorBuilder: (BuildContext context, int index) {
-                return ListTile(
-                  title: Text(posts?[index].title ?? ""),
-                );
-              },
-              itemBuilder: (BuildContext context, int index) {
-                return Divider();
-              },
-            );
-          },
-        ),
+        body: PostsList(),
       ),
     );
   }
