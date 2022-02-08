@@ -16,11 +16,6 @@ class PostsList extends StatefulWidget {
 class _PostsListState extends State<PostsList> {
   final TextEditingController _controller = TextEditingController();
   TitlePost.Title? postTitle;
-  void _onPressed() async {
-    final String _title = _controller.text;
-    final TitlePost.Title postTitle = await ApiProvider().postPosts(_title);
-    setState(() {});
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +35,8 @@ class _PostsListState extends State<PostsList> {
                 onPressed: () async {
                   final String _title = _controller.text;
                   postTitle = await ApiProvider().postPosts(_title);
+                  setState(() {});
+                  _controller.text = "";
                 },
                 child: const Text("Enter"))
           ],
