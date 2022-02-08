@@ -1,5 +1,3 @@
-import 'package:api_integration/bloc/post_bloc.dart';
-import 'package:api_integration/model/posts_model.dart';
 import 'package:api_integration/ui/posts_get.dart';
 import 'package:flutter/material.dart';
 

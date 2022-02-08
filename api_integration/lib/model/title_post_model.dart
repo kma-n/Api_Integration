@@ -16,17 +16,17 @@ class Title {
     this.body,
   });
 
-  String? userId;
-  int? id;
-  String? title;
-  String? body;
-
   factory Title.fromJson(Map<String, dynamic> json) => Title(
         userId: json["userId"],
         id: json["id"],
         title: json["title"],
         body: json["body"],
       );
+
+  String? body;
+  int? id;
+  String? title;
+  String? userId;
 
   Map<String, dynamic> toJson() => {
         "userId": userId,

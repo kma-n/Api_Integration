@@ -1,6 +1,6 @@
 import 'package:api_integration/bloc/post_bloc.dart';
 import 'package:api_integration/model/posts_model.dart';
-import 'package:api_integration/model/title_post_model.dart' as TitlePost;
+import 'package:api_integration/model/title_post_model.dart' as title_post;
 import 'package:api_integration/persistance/api_provider.dart';
 import 'package:flutter/material.dart';
 
@@ -14,8 +14,9 @@ class PostsList extends StatefulWidget {
 }
 
 class _PostsListState extends State<PostsList> {
+  title_post.Title? postTitle;
+
   final TextEditingController _controller = TextEditingController();
-  TitlePost.Title? postTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +66,7 @@ class _PostsListState extends State<PostsList> {
                   );
                 },
                 itemBuilder: (BuildContext context, int index) {
-                  return Divider();
+                  return const Divider();
                 },
               );
             },
